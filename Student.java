@@ -29,7 +29,7 @@ class Student
             info.name = scanner.next();
             students.add(info);
         }
-
+        System.out.println("Top of departments :");
         students
                 .stream()
                 .sorted((a, b) -> { return a.department.compareTo(b.department); })
@@ -43,5 +43,19 @@ class Student
                 .sorted((a, b) -> { return Integer.compare(b.count, a.count); })
                 .limit(3)
                 .forEach(info -> { System.out.println(info.department + " " + info.count); });
+        System.out.println("Alphabet order :");
+        String[] arr = new String[students.size()];
+        int i = 0;
+        for(StudentInfo s : students)
+        {
+            arr[i] = s.department;
+            i++;
+        }
+        Arrays
+                .stream(arr)
+                .distinct()
+                .sorted((a, b) -> { return a.compareTo(b); })
+                .forEach(a -> { System.out.println(a); });
+
     }
 }
