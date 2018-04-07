@@ -1,26 +1,32 @@
 import java.util.function.Predicate;
 import java.util.function.Consumer;
-import java.util.List;
-import java.util.Arrays;
 
-class Multiply
-
+class TrueFalse
 {
-    public static void main(String[] args)
+    static Predicate<Integer> condition = x -> x%2!=0;
+    public static String ifTrue(int a)
     {
-        List<Integer> num = Arrays.asList(1,2,3,4,5,6,7);
-        Predicate<Integer> isPositive = x -> x%2!=0;
-        for(Integer a : num)
-        {
-            if(isPositive.test(a))
+        return "Odd";
+    }
+    public static String ifFalse(int a)
+    {
+        return "Even";
+    }
+	public static String ternaryOperator(int a)
+	{
+            if(condition.test(a))
             {
-                a *= 3;
+                return ifTrue(a);
             }
             else
             {
-                a *= 5;
+                return ifFalse(a);
             }
-            System.out.println(a);
-        }
+    }
+    public static void main(String[] args)
+    {
+        int a = 6;
+        //Predicate<Integer> condition = x -> x%2!=0;
+        System.out.println(ternaryOperator(a));
     }
 }
